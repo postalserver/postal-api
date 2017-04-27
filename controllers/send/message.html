@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Send a message - Send API - API Documentation</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../assets/reset.css">
+    <link rel="stylesheet" href="../../assets/style.css">
+  </head>
+  <body>
+    <section class='sidebarBackground'></section>
+    <section class="sidebar">
+      <nav>
+        <ul>
+          <li>
+            <a href='../../index.html' class="">
+              Home
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href='../../controllers/messages.html' class="">
+              Messages API
+            </a>
+          </li>
+          
+          <li>
+            <a href='../../controllers/send.html' class="active">
+              Send API
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+    </section>
+    <section class='content'>
+      
+
+
+<h1>Send a message</h1>
+
+<p class='text'>This action allows you to send a message by providing the appropriate options</p>
+
+
+
+
+
+<h2>URL</h2>
+<p class='apiURLFull'><span>/api/v1/</span>send/message</p>
+
+
+
+
+  <h2>Access</h2>
+  <p class='text'>
+    Must be authenticated as a server.
+    
+    If not authorised, a <code>AccessDenied</code> error will be returned.
+    
+  </p>
+
+
+
+
+<h2>Parameters</h2>
+
+  <table class='table paramTable'>
+    <thead>
+      <tr>
+        <th width="60%">Parameter</th>
+        <th width="20%">Type</th>
+        <th width="20%">Default</th>
+      </tr>
+    </thead>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>to</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The e-mail addresses of the recipients (max 50)</p>
+        
+      </td>
+      <td>Array</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>cc</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The e-mail addresses of any CC contacts (max 50)</p>
+        
+      </td>
+      <td>Array</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>bcc</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The e-mail addresses of any BCC contacts (max 50)</p>
+        
+      </td>
+      <td>Array</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>from</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The e-mail address of the sender</p>
+        
+      </td>
+      <td>String</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>subject</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The subject of the e-mail</p>
+        
+      </td>
+      <td>String</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>tag</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The tag of the e-mail</p>
+        
+      </td>
+      <td>String</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>reply_to</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>Set the reply-to address for the mail</p>
+        
+      </td>
+      <td>String</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>plain_body</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The plain text body of the e-mail</p>
+        
+      </td>
+      <td>String</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>html_body</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>The HTML body of the e-mail</p>
+        
+      </td>
+      <td>String</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>attachments</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>An array of attachments for this e-mail</p>
+        
+      </td>
+      <td>Array</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>headers</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>A hash of additional headers</p>
+        
+      </td>
+      <td>Hash</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p>
+          <span class='paramTable__name'>bounce</span>
+          
+        </p>
+        
+          <p class='paramTable__description'>Is this message a bounce?</p>
+        
+      </td>
+      <td>Boolean</td>
+      <td>
+        
+          <span class='paramTable__nil'>null</span>
+        
+      </td>
+    </tr>
+    
+  </table>
+
+
+
+
+<h2>Errors</h2>
+
+
+  <table class='table errorsTable'>
+  <thead>
+    <tr>
+      <th width="60%">Error</th>
+      <th width="40%">Attributes</th>
+    </tr>
+  </thead>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>ValidationError</span>
+        
+          <p class='paramTable__description'>The provided data was not sufficient to send an email</p>
+        
+      </p>
+    </td>
+    <td>
+      
+      <ul class='errorAttributeList'>
+        
+        <li>
+          <p class='errorAttributeList__name'>errors</p>
+          <p class='errorAttributeList__desc'>A hash of error details</p>
+        </li>
+        
+      </ul>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>NoRecipients</span>
+        
+          <p class='paramTable__description'>There are no recipients defined to received this message</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>NoContent</span>
+        
+          <p class='paramTable__description'>There is no content defined for this e-mail</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>TooManyToAddresses</span>
+        
+          <p class='paramTable__description'>The maximum number of To addresses has been reached (maximum 50)</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>TooManyCCAddresses</span>
+        
+          <p class='paramTable__description'>The maximum number of CC addresses has been reached (maximum 50)</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>TooManyBCCAddresses</span>
+        
+          <p class='paramTable__description'>The maximum number of BCC addresses has been reached (maximum 50)</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>FromAddressMissing</span>
+        
+          <p class='paramTable__description'>The From address is missing and is required</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>UnauthenticatedFromAddress</span>
+        
+          <p class='paramTable__description'>The From address is not authorised to send mail from this server</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>AttachmentMissingName</span>
+        
+          <p class='paramTable__description'>An attachment is missing a name</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p>
+        <span class='paramTable__name'>AttachmentMissingData</span>
+        
+          <p class='paramTable__description'>An attachment is missing data</p>
+        
+      </p>
+    </td>
+    <td>
+      
+    </td>
+  </tr>
+  
+</table>
+
+
+
+
+<h2>Response Data</h2>
+
+  <p class='text'>
+    This action will return a Hash.
+  </p>
+  
+
+
+
+    </section>
+    <footer class='footer'>
+      <p>Generated by Moonrope at 10:12 on Thursday 27 April 2017 for 4de6dc</p>
+    </footer>
+    <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
+    <script src='../../assets/try.js'></script>
+  </body>
+</html>
