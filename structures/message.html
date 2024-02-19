@@ -6,6 +6,18 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../assets/reset.css">
     <link rel="stylesheet" href="../assets/style.css">
+    <style>
+      pre code {
+      display: block;
+      background: none;
+      white-space: pre;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: none;
+      max-width: 100%;
+      min-width: 100px;
+      padding: 0;
+      }
+    </style>
   </head>
   <body>
     <section class='sidebarBackground'></section>
@@ -14,209 +26,463 @@
         <ul>
           <li>
             <a href='../index.html' class="">
-              Home
+            Home
             </a>
           </li>
-          
           <li>
             <a href='../authenticators/server.html' class="">
-              Server Authenticator
+            Server Authenticator
             </a>
           </li>
-          
-          
           <li>
             <a href='../controllers/messages.html' class="">
-              Messages API
+            Messages API
             </a>
           </li>
-          
           <li>
             <a href='../controllers/send.html' class="">
-              Send API
+            Send API
             </a>
           </li>
-          
         </ul>
       </nav>
     </section>
     <section class='content'>
-      
-
-<h1>Message Structure</h1>
-
-<h2>Base Attributes</h2>
-<table class='table paramTable'>
-  <thead>
-    <tr>
-      <th width="45%">Attribute</th>
-      <th width="20%">Type</th>
-      <th width="35%">Example</th>
-    </tr>
-  </thead>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>id</span>
+      <h1>Message Structure</h1>
+      <h2>Base Attributes</h2>
+      <table class='table paramTable'>
+        <thead>
+          <tr>
+            <th width="45%">Attribute</th>
+            <th width="20%">Type</th>
+            <th width="35%">Example</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>id</span>
+            </p>
+          </td>
+          <td>Integer</td>
+          <td>123</td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>token</span>
+            </p>
+          </td>
+          <td>String</td>
+          <td>
+            "htAfOcKeTp8e"
+          </td>
+        </tr>
+      </table>
+      <h2>Expansions</h2>
+      <p class='text'>
+        Expansions are embedded structures of other objects that are related to the structure
+        that you're viewing. Which expansions are returned by a specific action are shown on that
+        action's documentation however some actions allow you to choose which expansions are
+        returned.
       </p>
+      <table class='table paramTable'>
+        <thead>
+          <tr>
+            <th width="45%">Attribute</th>
+            <th width="20%">Type</th>
+            <th width="35%">Example</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>status</span>
+            </p>
+          </td>
+          <td>Object</td>
+          <td>
+            <pre class='code'><code>{
+  "status": "Sent",
+  "last_delivery_attempt": 1708346931.0758002,
+  "held": false,
+  "hold_expiry": null
+}
+</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>details</span>
+            </p>
+          </td>
+          <td>Object</td>
+          <td>
+            <pre class='code'><code>{
+  "rcpt_to": "Destination Email Address",
+  "mail_from": "Email Sender",
+  "subject": "Email Subject ",
+  "message_id": "Message ID ",
+  "timestamp": 1708346925.992264,
+  "direction": "incoming",
+  "size": "580496",
+  "bounce": false,
+  "bounce_for_id": 0,
+  "tag": null,
+  "received_with_ssl": null
+}</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>inspection</span>
+            </p>
+          </td>
+          <td>Object</td>
+          <td>
+            <pre class='code'><code>{
+ "inspected": true,
+ "spam": false,
+ "spam_score": 0.0,
+ "threat": false,
+ "threat_details": null
+}</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>plain_body</span>
+            </p>
+          </td>
+          <td>String</td>
+          <td>
+            <pre class='code'><code>"Hi this is my email"</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>html_body</span>
+            </p>
+          </td>
+          <td>String</td>
+          <td>HTML of Email</td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>attachments</span>
+            </p>
+          </td>
+          <td>Array</td>
+          <td>
+            <pre class='code'><code>[
+    {
+        "filename": "image001.png",
+        "content_type": "image/png",
+        "data": "Bas64 Encoded String",
+        "size": 5088,
+        "hash": "Hashed Value"
+    }
+]</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>headers</span>
+            </p>
+          </td>
+          <td>Object</td>
+          <td>
+            <pre class='code'><code>{
+  "received": [
+      ""
+  ],
+  "date": [
+      ""
+  ],
+  "from": [
+      ""
+  ],
+  "to": [
+      ""
+  ],
+  "cc": [
+      ""
+  ],
+  "message-id": [
+      ""
+  ],
+  "in-reply-to": [
+      ""
+  ],
+  "references": [
+      ""
+  ],
+  "subject": [
+      ""
+  ],
+  "mime-version": [
+      ""
+  ],
+  "content-type": [
+      ""
+  ],
+  "x-postal-spam": [
+      ""
+  ],
+  "x-postal-spam-threshold": [
+      ""
+  ],
+  "x-postal-spam-score": [
+      ""
+  ],
+  "x-postal-threat": [
+      ""
+  ],
+  "dkim-signature": [
+      ""
+  ],
+  "x-mc-unique": [
+      ""
+  ],
+  "thread-topic": [
+      ""
+  ],
+  "thread-index": [
+      ""
+  ],
+  "accept-language": [
+      "
+  ],
+  "x-ms-has-attach": [
+      ""
+  ],
+  "x-ms-tnef-correlator": [
       
+  ],
+  "x-ms-publictraffictype": [
+      ""
+  ],
+  "x-ms-traffictypediagnostic": [
+      ""
+  ],
+  "x-ms-office365-filtering-correlation-id": [
+      ""
+  ],
+  "x-ms-exchange-senderadcheck": [
+      ""
+  ],
+  "x-ms-exchange-antispam-relay": [
+      ""
+  ],
+  "x-microsoft-antispam": [
+      ""
+  ],
+  "x-microsoft-antispam-message-info": [
+      ""
+  ],
+  "x-forefront-antispam-report": [
+      ""
+  ],
 
-      
-      
-    </td>
-    <td></td>
-    <td>
-      
-        
-      
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>token</span>
-      </p>
-      
-
-      
-      
-    </td>
-    <td></td>
-    <td>
-      
-        
-      
-    </td>
-  </tr>
-  
-
-  
-</table>
-
-
-
-
-
-
-<h2>Expansions</h2>
-<p class='text'>
-  Expansions are embedded structures of other objects that are related to the structure
-  that you're viewing. Which expansions are returned by a specific action are shown on that
-  action's documentation however some actions allow you to choose which expansions are
-  returned.
-</p>
-<table class='table paramTable'>
-  <thead>
-    <tr>
-      <th width="45%">Attribute</th>
-      <th width="20%">Type</th>
-      <th width="35%">Example</th>
-    </tr>
-  </thead>
-  
-
-  
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>status</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>details</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>inspection</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>plain_body</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>html_body</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>attachments</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>headers</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  <tr>
-    <td>
-      <p>
-        <span class='paramTable__name'>raw_message</span>
-      </p>
-      
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
-  
-  
-</table>
-
-
-
+  "x-originatororg": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-authas": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-authsource": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-network-message-id": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-originalarrivaltime": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-fromentityheader": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-id": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-mailboxtype": [
+      ""
+  ],
+  "x-ms-exchange-crosstenant-userprincipalname": [
+      ""
+  ],
+  "x-ms-exchange-transport-crosstenantheadersstamped": [
+      ""
+  ],
+  "x-mimecast-spam-score": [
+      ""
+  ],
+  "x-mimecast-originator": [
+      ""
+  ],
+  "content-language": [
+      ""
+  ]
+}</code></pre>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <span class='paramTable__name'>raw_message</span>
+            </p>
+          </td>
+          <td>String</td>
+          <td>Base64 Encoded String</td>
+        </tr>
+      </table>
+      <h2>Example Response</h2>
+      <pre class='code'><code>
+{
+    "status": "success",
+    "time": 0.02,
+    "flags": {},
+    "data": {
+        "id": 2598,
+        "token": "htAfOcKeTp8e",
+        "status": {
+            "status": "Sent",
+            "last_delivery_attempt": 1708346931.0758002,
+            "held": false,
+            "hold_expiry": null
+        },
+        "details": {
+          "rcpt_to": "Destination Email Address",
+          "mail_from": "Email Sender",
+          "subject": "Email Subject ",
+          "message_id": "Message ID ",
+          "timestamp": 1708346925.992264,
+          "direction": "incoming",
+          "size": "580496",
+          "bounce": false,
+          "bounce_for_id": 0,
+          "tag": null,
+          "received_with_ssl": null
+        },
+        "inspection": {
+            "inspected": true,
+            "spam": false,
+            "spam_score": 0.0,
+            "threat": false,
+            "threat_details": null
+        },
+        "plain_body": "Email in Plain Text",
+        "html_body": "HTML String",
+        "attachments": [
+            {
+                "filename": "Filename.pdf",
+                "content_type": "Mimetype",
+                "data": "Base64 Encoded String",
+                "size": 45341,
+                "hash": "Hashed String"
+            },
+            {
+                "filename": "Filename.pdf",
+                "content_type": "Mimetype",
+                "data": "Base64 Encoded String",
+                "size": 250842,
+                "hash": "Hashed String"
+            }
+        ],
+        "headers": {
+            "received": [
+                ""
+            ],
+            "date": [
+                ""
+            ],
+            "from": [
+                ""
+            ],
+            "to": [
+                ""
+            ],
+            "cc": [
+                ""
+            ],
+            "message-id": [
+                ""
+            ],
+            "in-reply-to": [
+                ""
+            ],
+            "references": [
+                ""
+            ],
+            "subject": [
+                ""
+            ],
+            "mime-version": [
+                ""
+            ],
+            "content-type": [
+                ""
+            ],
+            "x-postal-spam": [
+                ""
+            ],
+            "x-postal-spam-threshold": [
+                ""
+            ],
+            "x-postal-spam-score": [
+                ""
+            ],
+            "x-postal-threat": [
+                ""
+            ],
+            "dkim-signature": [
+                ""
+            ],
+            "x-mc-unique": [
+                ""
+            ],
+            "thread-topic": [
+                ""
+            ],
+            "thread-index": [
+                ""
+            ],
+            "accept-language": [
+                ""
+            ],
+            "x-ms-has-attach": [
+                ""
+            ],
+            "x-ms-tnef-correlator": [
+                null
+            ],
+            "x-ms-publictraffictype": [
+                ""
+            ],
+            "x-ms-traffictypediagnostic": [
+                ""
+            ],
+            "x-originatororg": [
+                ""
+            ],
+            "content-language": [
+                ""
+            ]
+        },
+        "raw_message": "Base64 Encoded String",
+        "activity_entries": {
+            "loads": [],
+            "clicks": []
+        }
+    }
+}</code>
+</pre>
     </section>
-    <footer class='footer'>
-      <p>Generated by Moonrope at 19:54 on Friday  5 May 2017 for dc44d1</p>
-    </footer>
-    <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
-    <script src='../assets/try.js'></script>
   </body>
 </html>
